@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteras Originales - Elegancia y Estilo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nude: {
+                            50: '#faf9f7',
+                            100: '#f5f2ed',
+                            200: '#ebe4d9',
+                            300: '#ddd1c0',
+                            400: '#c9b299',
+                            500: '#b8956f',
+                            600: '#a67c52',
+                            700: '#8b6441',
+                            800: '#6f4f33',
+                            900: '#5a3f2a'
+                        },
+                        cream: {
+                            50: '#fefcf9',
+                            100: '#fdf8f1',
+                            200: '#faf0e1',
+                            300: '#f5e6cc',
+                            400: '#eed7b0',
+                            500: '#e4c490',
+                            600: '#d6ad6f',
+                            700: '#c49654',
+                            800: '#a17c44',
+                            900: '#826339'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+        
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f5f2ed 0%, #ebe4d9 50%, #ddd1c0 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(184, 149, 111, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #c9b299 0%, #b8956f 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(184, 149, 111, 0.3);
+            background: linear-gradient(135deg, #b8956f 0%, #a67c52 100%);
+        }
+
+        .image-upload-area {
+            border: 2px dashed #c9b299;
+            transition: all 0.3s ease;
+        }
+
+        .image-upload-area:hover {
+            border-color: #b8956f;
+            background-color: #faf9f7;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body class="font-montserrat bg-nude-50">
+    <!-- Header -->
+    <header class="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-50 border-b border-nude-200">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="text-3xl font-cormorant font-bold text-nude-800">
+                        Carteras Originales
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio" class="text-nude-800 hover:text-nude-600 px-3 py-2 text-sm font-medium transition-colors">Inicio</a>
+                        <a href="#productos" class="text-nude-700 hover:text-nude-600 px-3 py-2 text-sm font-medium transition-colors">Productos</a>
+                        <a href="#nosotros" class="text-nude-700 hover:text-nude-600 px-3 py-2 text-sm font-medium transition-colors">Nosotros</a>
+                        <a href="#contacto" class="text-nude-700 hover:text-nude-600 px-3 py-2 text-sm font-medium transition-colors">Contacto</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="openCart()" class="text-nude-700 hover:text-nude-600 transition-colors bg-nude-100 px-4 py-2 rounded-full">
+                        🛒 <span id="cartCounter" class="ml-1 text-sm font-medium">Carrito (0)</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient text-nude-800 py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-cormorant font-bold mb-8 leading-tight">
+                    Elegancia Atemporal
+                </h1>
+                <p class="text-xl md:text-2xl mb-12 text-nude-700 max-w-4xl mx-auto font-light leading-relaxed">
+                    Descubre nuestra colección exclusiva de carteras artesanales. Cada pieza es única, diseñada con pasión y creada para mujeres que valoran la sofisticación y la originalidad.
+                </p>
+                <button onclick="scrollToProducts()" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-medium tracking-wide">
+                    Explorar Colección
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Section -->
+    <section id="productos" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-cormorant font-bold text-nude-800 mb-6">
+                    Nuestra Colección
+                </h2>
+                <p class="text-lg text-nude-600 max-w-3xl mx-auto font-light">
+                    Cada cartera es una obra de arte funcional, diseñada para complementar tu estilo único con la máxima elegancia
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Producto 1 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden border border-nude-100">
+                    <div class="h-80 bg-gradient-to-br from-cream-100 to-nude-200 flex flex-col items-center justify-center p-8">
+                        <div class="image-upload-area w-full h-full flex flex-col items-center justify-center rounded-2xl cursor-pointer" onclick="uploadImage(this, 1)">
+                            <div class="text-4xl mb-4 text-nude-400">📷</div>
+                            <p class="text-nude-500 text-center text-sm">Haz clic para subir imagen</p>
+                            <p class="text-nude-400 text-xs mt-2">de tu cartera</p>
+                        </div>
+                        <input type="file" id="imageInput1" accept="image/*" style="display: none;" onchange="handleImageUpload(event, 1)">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-3">Cartera Elegance</h3>
+                        <p class="text-nude-600 mb-6 font-light">Diseño minimalista en cuero genuino con detalles dorados y acabados artesanales</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-cormorant font-bold text-nude-700">$189.99</span>
+                            <button onclick="addToCart('Cartera Elegance', 189.99, 1)" class="bg-nude-600 text-white px-6 py-3 rounded-full hover:bg-nude-700 transition-colors font-medium">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden border border-nude-100">
+                    <div class="h-80 bg-gradient-to-br from-nude-100 to-cream-200 flex flex-col items-center justify-center p-8">
+                        <div class="image-upload-area w-full h-full flex flex-col items-center justify-center rounded-2xl cursor-pointer" onclick="uploadImage(this, 2)">
+                            <div class="text-4xl mb-4 text-nude-400">📷</div>
+                            <p class="text-nude-500 text-center text-sm">Haz clic para subir imagen</p>
+                            <p class="text-nude-400 text-xs mt-2">de tu cartera</p>
+                        </div>
+                        <input type="file" id="imageInput2" accept="image/*" style="display: none;" onchange="handleImageUpload(event, 2)">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-3">Cartera Bohemia</h3>
+                        <p class="text-nude-600 mb-6 font-light">Estilo bohemio con bordados artesanales, flecos delicados y texturas únicas</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-cormorant font-bold text-nude-700">$224.99</span>
+                            <button onclick="addToCart('Cartera Bohemia', 224.99, 2)" class="bg-nude-600 text-white px-6 py-3 rounded-full hover:bg-nude-700 transition-colors font-medium">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden border border-nude-100">
+                    <div class="h-80 bg-gradient-to-br from-cream-200 to-nude-300 flex flex-col items-center justify-center p-8">
+                        <div class="image-upload-area w-full h-full flex flex-col items-center justify-center rounded-2xl cursor-pointer" onclick="uploadImage(this, 3)">
+                            <div class="text-4xl mb-4 text-nude-400">📷</div>
+                            <p class="text-nude-500 text-center text-sm">Haz clic para subir imagen</p>
+                            <p class="text-nude-400 text-xs mt-2">de tu cartera</p>
+                        </div>
+                        <input type="file" id="imageInput3" accept="image/*" style="display: none;" onchange="handleImageUpload(event, 3)">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-3">Cartera Vintage</h3>
+                        <p class="text-nude-600 mb-6 font-light">Inspiración retro con acabados en cuero envejecido y herrajes vintage</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-cormorant font-bold text-nude-700">$199.99</span>
+                            <button onclick="addToCart('Cartera Vintage', 199.99, 3)" class="bg-nude-600 text-white px-6 py-3 rounded-full hover:bg-nude-700 transition-colors font-medium">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden border border-nude-100">
+                    <div class="h-80 bg-gradient-to-br from-nude-200 to-cream-300 flex flex-col items-center justify-center p-8">
+                        <div class="image-upload-area w-full h-full flex flex-col items-center justify-center rounded-2xl cursor-pointer" onclick="uploadImage(this, 4)">
+                            <div class="text-4xl mb-4 text-nude-400">📷</div>
+                            <p class="text-nude-500 text-center text-sm">Haz clic para subir imagen</p>
+                            <p class="text-nude-400 text-xs mt-2">de tu cartera</p>
+                        </div>
+                        <input type="file" id="imageInput4" accept="image/*" style="display: none;" onchange="handleImageUpload(event, 4)">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-3">Cartera Moderna</h3>
+                        <p class="text-nude-600 mb-6 font-light">Líneas contemporáneas con compartimentos inteligentes y diseño funcional</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-cormorant font-bold text-nude-700">$249.99</span>
+                            <button onclick="addToCart('Cartera Moderna', 249.99, 4)" class="bg-nude-600 text-white px-6 py-3 rounded-full hover:bg-nude-700 transition-colors font-medium">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden border border-nude-100">
+                    <div class="h-80 bg-gradient-to-br from-cream-300 to-nude-400 flex flex-col items-center justify-center p-8">
+                        <div class="image-upload-area w-full h-full flex flex-col items-center justify-center rounded-2xl cursor-pointer" onclick="uploadImage(this, 5)">
+                            <div class="text-4xl mb-4 text-nude-400">📷</div>
+                            <p class="text-nude-500 text-center text-sm">Haz clic para subir imagen</p>
+                            <p class="text-nude-400 text-xs mt-2">de tu cartera</p>
+                        </div>
+                        <input type="file" id="imageInput5" accept="image/*" style="display: none;" onchange="handleImageUpload(event, 5)">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-3">Cartera Ejecutiva</h3>
+                        <p class="text-nude-600 mb-6 font-light">Perfecta para el trabajo con estilo profesional y elegancia sofisticada</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-cormorant font-bold text-nude-700">$279.99</span>
+                            <button onclick="addToCart('Cartera Ejecutiva', 279.99, 5)" class="bg-nude-600 text-white px-6 py-3 rounded-full hover:bg-nude-700 transition-colors font-medium">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 6 -->
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden border border-nude-100">
+                    <div class="h-80 bg-gradient-to-br from-nude-300 to-cream-400 flex flex-col items-center justify-center p-8">
+                        <div class="image-upload-area w-full h-full flex flex-col items-center justify-center rounded-2xl cursor-pointer" onclick="uploadImage(this, 6)">
+                            <div class="text-4xl mb-4 text-nude-400">📷</div>
+                            <p class="text-nude-500 text-center text-sm">Haz clic para subir imagen</p>
+                            <p class="text-nude-400 text-xs mt-2">de tu cartera</p>
+                        </div>
+                        <input type="file" id="imageInput6" accept="image/*" style="display: none;" onchange="handleImageUpload(event, 6)">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-3">Cartera Casual</h3>
+                        <p class="text-nude-600 mb-6 font-light">Ideal para el día a día con múltiples bolsillos y comodidad excepcional</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-3xl font-cormorant font-bold text-nude-700">$159.99</span>
+                            <button onclick="addToCart('Cartera Casual', 159.99, 6)" class="bg-nude-600 text-white px-6 py-3 rounded-full hover:bg-nude-700 transition-colors font-medium">
+                                Agregar al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="py-24 bg-nude-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-cormorant font-bold text-nude-800 mb-8">
+                        Nuestra Historia
+                    </h2>
+                    <p class="text-lg text-nude-600 mb-8 font-light leading-relaxed">
+                        Desde 2015, nos dedicamos a crear carteras únicas que reflejan la personalidad de cada mujer. Cada pieza es cuidadosamente diseñada y elaborada por artesanos expertos que comparten nuestra pasión por la calidad y la originalidad.
+                    </p>
+                    <p class="text-lg text-nude-600 mb-12 font-light leading-relaxed">
+                        Utilizamos solo materiales de la más alta calidad y técnicas tradicionales combinadas con diseños contemporáneos para crear carteras que no solo son hermosas, sino también duraderas y funcionales.
+                    </p>
+                    <div class="grid grid-cols-3 gap-8 text-center">
+                        <div class="bg-white p-6 rounded-2xl shadow-sm">
+                            <div class="text-4xl font-cormorant font-bold text-nude-700 mb-2">500+</div>
+                            <div class="text-sm text-nude-600 font-medium">Clientes Felices</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm">
+                            <div class="text-4xl font-cormorant font-bold text-nude-700 mb-2">8</div>
+                            <div class="text-sm text-nude-600 font-medium">Años de Experiencia</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm">
+                            <div class="text-4xl font-cormorant font-bold text-nude-700 mb-2">100%</div>
+                            <div class="text-sm text-nude-600 font-medium">Artesanal</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-nude-400 to-cream-500 rounded-3xl p-12 text-center text-white">
+                    <div class="text-8xl mb-8">✨</div>
+                    <h3 class="text-3xl font-cormorant font-semibold mb-6">Calidad Garantizada</h3>
+                    <p class="text-nude-100 font-light text-lg leading-relaxed">
+                        Cada cartera viene con garantía de por vida en defectos de fabricación. Tu satisfacción es nuestra prioridad absoluta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-cormorant font-bold text-nude-800 mb-6">
+                    Contáctanos
+                </h2>
+                <p class="text-lg text-nude-600 font-light">
+                    ¿Tienes alguna pregunta? Nos encantaría ayudarte
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div>
+                    <div class="bg-nude-50 rounded-3xl p-10">
+                        <h3 class="text-2xl font-cormorant font-semibold text-nude-800 mb-8">Información de Contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="text-3xl mr-6 text-nude-500">📍</div>
+                                <div>
+                                    <div class="font-medium text-nude-800 text-lg">Dirección</div>
+                                    <div class="text-nude-600">Av. Principal 123, Ciudad</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-3xl mr-6 text-nude-500">📞</div>
+                                <div>
+                                    <div class="font-medium text-nude-800 text-lg">Teléfono</div>
+                                    <div class="text-nude-600">+1 (555) 123-4567</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-3xl mr-6 text-nude-500">✉️</div>
+                                <div>
+                                    <div class="font-medium text-nude-800 text-lg">Email</div>
+                                    <div class="text-nude-600">info@carterasoriginales.com</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="text-3xl mr-6 text-nude-500">🕒</div>
+                                <div>
+                                    <div class="font-medium text-nude-800 text-lg">Horarios</div>
+                                    <div class="text-nude-600">Lun - Vie: 9:00 AM - 6:00 PM</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <form class="space-y-6" onsubmit="handleContactForm(event)">
+                        <div>
+                            <label class="block text-sm font-medium text-nude-700 mb-3">Nombre</label>
+                            <input type="text" required class="w-full px-6 py-4 border border-nude-200 rounded-2xl focus:ring-2 focus:ring-nude-400 focus:border-transparent bg-nude-50">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-nude-700 mb-3">Email</label>
+                            <input type="email" required class="w-full px-6 py-4 border border-nude-200 rounded-2xl focus:ring-2 focus:ring-nude-400 focus:border-transparent bg-nude-50">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-nude-700 mb-3">Mensaje</label>
+                            <textarea rows="5" required class="w-full px-6 py-4 border border-nude-200 rounded-2xl focus:ring-2 focus:ring-nude-400 focus:border-transparent bg-nude-50"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary text-white py-4 rounded-2xl font-medium text-lg">
+                            Enviar Mensaje
+                        </button>
+                        <div class="text-sm text-nude-500 text-center bg-nude-100 p-3 rounded-xl">
+                            📝 Formulario de demostración - Los mensajes no se envían realmente
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-nude-800 text-nude-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="text-3xl font-cormorant font-bold mb-6">Carteras Originales</div>
+                    <p class="text-nude-300 mb-8 font-light text-lg leading-relaxed">
+                        Creando carteras únicas para mujeres que valoran la originalidad y la calidad artesanal desde 2015.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">📘 Facebook</a>
+                        <a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">📷 Instagram</a>
+                        <a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">🐦 Twitter</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-cormorant font-semibold mb-6">Enlaces Rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-nude-300 hover:text-nude-100 transition-colors">Inicio</a></li>
+                        <li><a href="#productos" class="text-nude-300 hover:text-nude-100 transition-colors">Productos</a></li>
+                        <li><a href="#nosotros" class="text-nude-300 hover:text-nude-100 transition-colors">Nosotros</a></li>
+                        <li><a href="#contacto" class="text-nude-300 hover:text-nude-100 transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-cormorant font-semibold mb-6">Información</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">Envíos</a></li>
+                        <li><a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">Devoluciones</a></li>
+                        <li><a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">Garantía</a></li>
+                        <li><a href="#" class="text-nude-300 hover:text-nude-100 transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-nude-700 mt-12 pt-8 text-center text-nude-400">
+                <p>&copy; 2024 Carteras Originales. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrito Modal -->
+    <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-3xl p-10 max-w-lg w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-cormorant font-semibold text-nude-800">Carrito de Compras</h3>
+                <button onclick="closeCart()" class="text-nude-500 hover:text-nude-700 text-2xl">✕</button>
+            </div>
+            <div id="cartItems" class="space-y-4 mb-8">
+                <!-- Los items del carrito se mostrarán aquí -->
+            </div>
+            <div class="border-t border-nude-200 pt-6">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="font-cormorant font-semibold text-xl text-nude-800">Total:</span>
+                    <span id="cartTotal" class="text-2xl font-cormorant font-bold text-nude-700">$0.00</span>
+                </div>
+                <button onclick="checkout()" class="w-full btn-primary text-white py-4 rounded-2xl font-medium text-lg mb-4">
+                    Proceder al Pago
+                </button>
+                <div class="text-sm text-nude-500 text-center bg-nude-100 p-3 rounded-xl">
+                    🛒 Carrito de demostración - No se procesan pagos reales
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let cartCount = 0;
+        let productImages = {};
+
+        function scrollToProducts() {
+            document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function uploadImage(element, productId) {
+            document.getElementById(`imageInput${productId}`).click();
+        }
+
+        function handleImageUpload(event, productId) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imageUrl = e.target.result;
+                    productImages[productId] = imageUrl;
+                    
+                    // Find the upload area and replace it with the image
+                    const uploadArea = event.target.parentElement.querySelector('.image-upload-area');
+                    uploadArea.innerHTML = `<img src="${imageUrl}" alt="Producto ${productId}" class="image-preview w-full h-full object-cover rounded-2xl">`;
+                    uploadArea.classList.remove('image-upload-area');
+                    uploadArea.onclick = null;
+                    
+                    showImageNotification();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function showImageNotification() {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-24 right-4 bg-nude-600 text-white px-6 py-3 rounded-2xl shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.textContent = '✓ Imagen subida correctamente';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        function addToCart(name, price, productId) {
+            const imageUrl = productImages[productId] || null;
+            cart.push({ name, price, productId, imageUrl });
+            cartCount++;
+            updateCartDisplay();
+            showCartNotification(name);
+        }
+
+        function updateCartDisplay() {
+            document.getElementById('cartCounter').textContent = `Carrito (${cartCount})`;
+        }
+
+        function showCartNotification(productName) {
+            const notification = document.createElement('div');
+            notification.className = 'fixed top-24 right-4 bg-nude-600 text-white px-6 py-4 rounded-2xl shadow-lg z-50 transform translate-x-full transition-transform duration-300';
+            notification.innerHTML = `<div class="flex items-center"><span class="mr-2">✓</span><span>${productName} agregado al carrito</span></div>`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        function openCart() {
+            const modal = document.getElementById('cartModal');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-nude-500 text-center py-8 font-light">Tu carrito está vacío</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    total += item.price;
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'flex items-center justify-between p-4 bg-nude-50 rounded-2xl';
+                    itemDiv.innerHTML = `
+                        <div class="flex items-center space-x-4">
+                            ${item.imageUrl ? 
+                                `<img src="${item.imageUrl}" alt="${item.name}" class="w-16 h-16 object-cover rounded-xl">` : 
+                                `<div class="w-16 h-16 bg-nude-200 rounded-xl flex items-center justify-center text-nude-400">📷</div>`
+                            }
+                            <div>
+                                <div class="font-medium text-nude-800">${item.name}</div>
+                                <div class="text-sm text-nude-600 font-cormorant">$${item.price.toFixed(2)}</div>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-nude-400 hover:text-nude-600 text-xl">🗑️</button>
+                    `;
+                    cartItems.appendChild(itemDiv);
+                });
+            }
+            
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+            modal.classList.remove('hidden');
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.add('hidden');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            cartCount--;
+            updateCartDisplay();
+            openCart(); // Refresh cart display
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            
+            alert('¡Gracias por tu compra! Esta es una demostración, no se procesó ningún pago real.');
+            cart = [];
+            cartCount = 0;
+            updateCartDisplay();
+            closeCart();
+        }
+
+        function handleContactForm(event) {
+            event.preventDefault();
+            alert('¡Gracias por tu mensaje! Te contactaremos pronto. (Esto es una demostración)');
+            event.target.reset();
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCart();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'972358b7c10ced84',t:'MTc1NTcwODE3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
